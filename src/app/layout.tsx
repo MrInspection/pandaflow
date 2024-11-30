@@ -1,10 +1,12 @@
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
-import { Providers } from "./components/providers"
 import { EB_Garamond } from "next/font/google"
-import { cn } from "@/utils"
 
 import "./globals.css"
+import { ReactNode } from "react"
+import { Providers } from "@/components/providers"
+import { ClerkProvider } from "@clerk/nextjs"
+import { cn } from "@/lib/utils"
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" })
 const eb_garamond = EB_Garamond({
@@ -13,21 +15,19 @@ const eb_garamond = EB_Garamond({
 })
 
 export const metadata: Metadata = {
-  title: "jStack App",
+  title: "PandaFlow",
   description: "Created using jStack",
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 }
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
-    <html lang="en" className={cn(inter.variable, eb_garamond.variable)}>
+    <ClerkProvider>
+      <html lang="en" className={cn(inter.variable, eb_garamond.variable)}>
       <body className="font-sans bg-brand-50 text-brand-950 antialiased">
-        <Providers>{children}</Providers>
+      <Providers>{children}</Providers>
       </body>
-    </html>
+      </html>
+    </ClerkProvider>
   )
 }
