@@ -1,3 +1,4 @@
+/*
 import { HTTPException } from "hono/http-exception"
 import { z } from "zod"
 import { router } from "../__internals/router"
@@ -29,3 +30,4 @@ export const postRouter = router({
       return c.superjson({ ...post })
     }),
 })
+*/
