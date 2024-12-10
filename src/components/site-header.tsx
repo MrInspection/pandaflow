@@ -4,9 +4,10 @@ import { SignOutButton } from "@clerk/nextjs"
 import { Button, buttonVariants } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import { ArrowRight } from "lucide-react"
+import { currentUser } from "@clerk/nextjs/server"
 
-export default function SiteHeader() {
-  const user = false
+export default async function SiteHeader() {
+  const user = await currentUser()
 
   return (
     <nav
@@ -34,7 +35,7 @@ export default function SiteHeader() {
                 <Link href="/sign-in" className={cn(buttonVariants({ size: "sm", variant: "outline" }))}>
                   Log In
                 </Link>
-                <Link href="/sign-in" className={cn(buttonVariants({ size: "sm" }))}>
+                <Link href="/sign-up" className={cn(buttonVariants({ size: "sm" }))}>
                   Sign Up <ArrowRight className="size-4" />
                 </Link>
               </>

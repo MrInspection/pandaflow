@@ -340,10 +340,7 @@ export default function HomePage() {
                 <p className="text-sm text-gray-600">@inkflow</p>
               </div>
             </div>
-
           </section>
-
-
         </MaxWidthWrapper>
       </section>
     </>
