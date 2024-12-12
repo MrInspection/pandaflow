@@ -3,6 +3,9 @@ import { redirect } from "next/navigation"
 import { db } from "@/lib/db"
 import { DashboardPageContent } from "@/app/dashboard/dashboard-page-content"
 import { DashboardPage } from "@/app/dashboard/dashboard-page"
+import { CreateEventCategoryModal } from "@/app/dashboard/_components/create-event-category-modal"
+import { Button } from "@/components/ui/button"
+import { PlusIcon } from "lucide-react"
 
 export default async function Dashboard() {
   const auth = await currentUser()
@@ -21,7 +24,12 @@ export default async function Dashboard() {
 
   return (
     <>
-      <DashboardPage title="Dashboard">
+      <DashboardPage
+        title="Dashboard"
+        cta={<CreateEventCategoryModal>
+          <Button> <PlusIcon className="size-4" /> Add Category</Button>
+        </CreateEventCategoryModal>}
+      >
         <DashboardPageContent />
       </DashboardPage>
     </>
