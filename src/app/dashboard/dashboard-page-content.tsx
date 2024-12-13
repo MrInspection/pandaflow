@@ -19,28 +19,28 @@ export function DashboardPageContent() {
     queryKey: ["user-event-categories"],
     queryFn: async () => {
       const res = await client.category.getEventCategories.$get()
-      const { categories } = await res.json();
-      return categories;
+      const { categories } = await res.json()
+      return categories
     },
   })
 
-  const { mutate: deleteCategory, isPending: isDeletingCategory} = useMutation({
+  const { mutate: deleteCategory, isPending: isDeletingCategory } = useMutation({
     mutationFn: async (name: string) => {
       await client.category.deleteCategory.$post({ name })
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({queryKey: ["user-event-categories"]})
+      queryClient.invalidateQueries({ queryKey: ["user-event-categories"] })
       setDeletingCategory(null)
-    }
+    },
   })
 
-  if(isEventCategoriesLoading) {
+  if (isEventCategoriesLoading) {
     return <div className="flex items-center justify-center flex-1 size-full">
       <LoadingSpinner />
     </div>
   }
 
-  if(!categories || categories.length === 0) {
+  if (!categories || categories.length === 0) {
     return <DashboardEmptyState />
   }
 

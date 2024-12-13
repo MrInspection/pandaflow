@@ -10,7 +10,7 @@ import { PlusIcon } from "lucide-react"
 export default async function Dashboard() {
   const auth = await currentUser()
 
-  if(!auth) {
+  if (!auth) {
     redirect("/sign-in")
   }
 
@@ -18,7 +18,7 @@ export default async function Dashboard() {
     where: { externalId: auth.id },
   })
 
-  if(!user) {
+  if (!user) {
     redirect("/sign-in")
   }
 

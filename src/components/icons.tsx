@@ -26,5 +26,5 @@ export const Icons = {
         fill="#1D9BF0"
       />
     </svg>
-  )
+  ),
 }

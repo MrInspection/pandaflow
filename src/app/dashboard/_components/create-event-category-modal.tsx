@@ -46,7 +46,7 @@ const EMOJI_OPTIONS = [
   { emoji: "🔔", label: "Notification" },
 ]
 
-export const CreateEventCategoryModal = ({children} : PropsWithChildren) => {
+export const CreateEventCategoryModal = ({ children }: PropsWithChildren) => {
   const [isOpen, setIsOpen] = useState(false)
   const queryClient = useQueryClient()
 
@@ -55,9 +55,9 @@ export const CreateEventCategoryModal = ({children} : PropsWithChildren) => {
       await client.category.createEventCategory.$post(data)
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({queryKey: ["user-event-categories"]})
+      queryClient.invalidateQueries({ queryKey: ["user-event-categories"] })
       setIsOpen(false)
-    }
+    },
   })
 
   const form = useForm<EventCategoryType>({
@@ -118,7 +118,7 @@ export const CreateEventCategoryModal = ({children} : PropsWithChildren) => {
                             className={cn(
                               `bg-[${color}]`,
                               "size-10 rounded-full ring-2 ring-offset-2 transition-all",
-                              selectedColor === color ? "ring-brand-700 scale-110" : "ring-transparent hover:scale-105"
+                              selectedColor === color ? "ring-brand-700 scale-110" : "ring-transparent hover:scale-105",
                             )}
                             onClick={() => form.setValue("color", color)}
                           >
@@ -143,7 +143,7 @@ export const CreateEventCategoryModal = ({children} : PropsWithChildren) => {
                             type="button" key={index}
                             className={cn(
                               "size-10 flex items-center justify-center text-xl rounded-md transition-all",
-                              selectedEmoji === value.emoji ? "bg-brand-100 ring-2 ring-brand-700 scale-110" : "bg-brand-100 hover:bg-brand-200"
+                              selectedEmoji === value.emoji ? "bg-brand-100 ring-2 ring-brand-700 scale-110" : "bg-brand-100 hover:bg-brand-200",
                             )}
                             onClick={() => form.setValue("emoji", value.emoji)}
                           >

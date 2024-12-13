@@ -22,7 +22,7 @@ export const Providers = ({ children }: PropsWithChildren) => {
             console.log(errorMessage)
           },
         }),
-      })
+      }),
   )
 
   return <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>

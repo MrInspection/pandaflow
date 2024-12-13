@@ -10,7 +10,7 @@ interface DashboardPageProps {
   cta?: ReactNode
 }
 
-export function DashboardPage({title, children, hideBackButton, cta}: DashboardPageProps) {
+export function DashboardPage({ title, children, hideBackButton, cta }: DashboardPageProps) {
   return (
     <section className="flex-1 size-full flex flex-col">
       <div className="p-6 sm:p-8 flex justify-between border-b border-gray-200">

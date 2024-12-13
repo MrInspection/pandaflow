@@ -12,7 +12,7 @@ const app = new Hono().basePath("/api").use(cors())
  */
 const appRouter =
   app.route("/auth", authRouter)
-     .route("/category", categoryRouter)
+    .route("/category", categoryRouter)
 
 
 // The handler Next.js uses to answer API requests

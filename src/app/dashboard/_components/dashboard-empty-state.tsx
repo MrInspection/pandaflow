@@ -13,7 +13,7 @@ export const DashboardEmptyState = () => {
       await client.category.insertQuickStartCategories.$post()
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({queryKey: ["user-event-categories"]})
+      queryClient.invalidateQueries({ queryKey: ["user-event-categories"] })
     },
   })
 

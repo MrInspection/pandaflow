@@ -1,7 +1,7 @@
-"use client";
+"use client"
 
 import React, { ReactNode, useEffect, useState } from "react"
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion"
 
 export interface AnimatedListProps {
   className?: string;
@@ -12,8 +12,8 @@ export interface AnimatedListProps {
 export const AnimatedList = React.memo(
   ({ className, children, delay = 1000 }: AnimatedListProps) => {
 
-    const [messages, setMessages] = useState<ReactNode[]>([]);
-    const childrenArray = React.Children.toArray(children);
+    const [messages, setMessages] = useState<ReactNode[]>([])
+    const childrenArray = React.Children.toArray(children)
 
     useEffect(() => {
       const interval = setInterval(() => {
@@ -37,11 +37,11 @@ export const AnimatedList = React.memo(
           ))}
         </AnimatePresence>
       </div>
-    );
+    )
   },
-);
+)
 
-AnimatedList.displayName = "AnimatedList";
+AnimatedList.displayName = "AnimatedList"
 
 export function AnimatedListItem({ children }: { children: React.ReactNode }) {
   const animations = {
@@ -49,11 +49,11 @@ export function AnimatedListItem({ children }: { children: React.ReactNode }) {
     animate: { scale: 1, opacity: 1, originY: 0 },
     exit: { scale: 0, opacity: 0 },
     transition: { type: "spring", stiffness: 350, damping: 40 },
-  };
+  }
 
   return (
     <motion.div {...animations} layout className="mx-auto w-full">
       {children}
     </motion.div>
-  );
+  )
 }

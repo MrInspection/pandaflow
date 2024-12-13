@@ -3,7 +3,7 @@ import { db } from "@/lib/db"
 import { currentUser } from "@clerk/nextjs/server"
 import { HTTPException } from "hono/http-exception"
 
-const authMiddleware = j.middleware(async ({c, next}) => {
+const authMiddleware = j.middleware(async ({ c, next }) => {
   const authHeader = c.req.header("Authorization")
 
   if (authHeader) {
@@ -13,12 +13,12 @@ const authMiddleware = j.middleware(async ({c, next}) => {
         apiKey: apiKey,
       },
     })
-    if(user) return next({ user })
+    if (user) return next({ user })
   }
 
   const auth = await currentUser()
 
-  if(!auth) {
+  if (!auth) {
     throw new HTTPException(401, { message: "Unauthorized" })
   }
 
@@ -28,7 +28,7 @@ const authMiddleware = j.middleware(async ({c, next}) => {
     },
   })
 
-  if(!user) {
+  if (!user) {
     throw new HTTPException(401, { message: "Unauthorized" })
   }
 
