@@ -19,11 +19,12 @@ model User {
   email      String  @unique
 
   quotaLimit Int
-  plan       Plan     @default(FREE)
-  apiKey     String   @unique @default(cuid())
-  discordId  String?
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
+  plan       Plan @default(FREE)
+
+  apiKey    String   @unique @default(cuid())
+  discordId String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   eventCategories EventCategory[]
   events          Event[]
@@ -77,7 +78,7 @@ model Event {
 model Quota {
   id     String @id @default(cuid())
   user   User   @relation(fields: [userId], references: [id])
-  userId String
+  userId String @unique
 
   year  Int
   month Int

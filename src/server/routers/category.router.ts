@@ -3,8 +3,9 @@ import { privateProcedure } from "@/server/procedures"
 import { db } from "@/lib/db"
 import { startOfMonth } from "date-fns"
 import { z } from "zod"
-import { EventCategorySchema } from "@/lib/validators/category.schema"
+import { categoryNameSchema, EventCategorySchema } from "@/lib/validators/category.schema"
 import { parseColor } from "@/lib/utils"
+import { HTTPException } from "hono/http-exception"
 
 export const categoryRouter = router({
   getEventCategories: privateProcedure
@@ -103,17 +104,17 @@ export const categoryRouter = router({
       const categories = await db.eventCategory.createMany({
         data: [
           {
-            name: "Bug",
+            name: "bug",
             emoji: "🐛",
             color: 0xff6b6b,
           },
           {
-            name: "Sale",
+            name: "sales",
             emoji: "💶",
             color: 0xffeb3b,
           },
           {
-            name: "Questions",
+            name: "questions",
             emoji: "🤔",
             color: 0x6c5ce7,
           },
@@ -124,4 +125,29 @@ export const categoryRouter = router({
       })
       return c.json({ success: true, count: categories.count })
     }),
+
+  pollCategory: privateProcedure
+    .input(z.object({name: categoryNameSchema}))
+    .query(async ({c, ctx, input}) => {
+      const { name } = input
+
+      const category = await db.eventCategory.findUnique({
+        where: { name_userId: { name, userId: ctx.user.id } },
+        include: {
+          _count: {
+            select: {
+              events: true,
+            },
+          },
+        }
+      })
+
+      if(!category) {
+        throw new HTTPException(404, { message: `Category ${name} not found` })
+      }
+
+      const hasEvents = category._count.events > 0
+
+      return c.json({ hasEvents })
+    })
 })

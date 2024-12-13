@@ -1,9 +1,11 @@
 import { z } from "zod"
 
+export const categoryNameSchema = z
+  .string().min(1, "Category name is required.")
+  .regex(/^[a-zA-Z0-9-]+$/, "Category name can only contain letters, numbers, or hyphens.")
+
 export const EventCategorySchema = z.object({
-  name: z
-    .string().min(1, "Category name is required.")
-    .regex(/^[a-zA-Z0-9-]+$/, "Category name can only contain letters, numbers, or hyphens."),
+  name: categoryNameSchema,
   color: z
     .string()
     .min(1, "Color is required.")
