@@ -9,7 +9,7 @@ import Link from "next/link"
 import { Button, buttonVariants } from "@/components/ui/button"
 import { useState } from "react"
 import { Modal } from "@/components/ui/modal"
-import { DashboardEmptyState } from "@/app/dashboard/dashboard-empty-state"
+import { DashboardEmptyState } from "@/app/dashboard/_components/dashboard-empty-state"
 
 export function DashboardPageContent() {
   const [deletingCategory, setDeletingCategory] = useState<string | null>(null)
