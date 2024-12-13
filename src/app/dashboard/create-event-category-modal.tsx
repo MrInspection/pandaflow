@@ -19,6 +19,7 @@ import { Button } from "@/components/ui/button"
 import { EventCategoryType, EventCategorySchema } from "@/lib/validators/category.schema"
 import { client } from "@/lib/client"
 import { Loader2 } from "lucide-react"
+import { createElementProps } from "react-syntax-highlighter"
 
 const COLOR_OPTIONS = [
   "#FF6B6B", // bg-[#FF6B6B] ring-[#FF6B6B] Bright Red
@@ -46,7 +47,11 @@ const EMOJI_OPTIONS = [
   { emoji: "🔔", label: "Notification" },
 ]
 
-export const CreateEventCategoryModal = ({ children }: PropsWithChildren) => {
+interface CreateEventCategoryModal extends PropsWithChildren {
+  containerClassName?: string
+}
+
+export const CreateEventCategoryModal = ({ children, containerClassName }: CreateEventCategoryModal) => {
   const [isOpen, setIsOpen] = useState(false)
   const queryClient = useQueryClient()
 
@@ -73,7 +78,9 @@ export const CreateEventCategoryModal = ({ children }: PropsWithChildren) => {
 
   return (
     <>
-      <div onClick={() => setIsOpen(true)}> {children} </div>
+      <div className={containerClassName} onClick={() => setIsOpen(true)}>
+        {children}
+      </div>
       <Modal showModal={isOpen} setShowModal={setIsOpen} className="max-w-xl p-8">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">

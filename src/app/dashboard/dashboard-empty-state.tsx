@@ -2,8 +2,8 @@ import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { client } from "@/lib/client"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Loader2, PlusIcon } from "lucide-react"
-import { CreateEventCategoryModal } from "@/app/dashboard/_components/create-event-category-modal"
+import { Archive, Loader2, PlusIcon } from "lucide-react"
+import { CreateEventCategoryModal } from "@/app/dashboard/create-event-category-modal"
 
 export const DashboardEmptyState = () => {
   const queryClient = useQueryClient()
@@ -37,14 +37,20 @@ export const DashboardEmptyState = () => {
             variant="outline"
             onClick={() => insertQuickStartCategories()}
             disabled={isPending}
+            className="w-full"
           >
             {isPending ? (
               <div className="inline-flex items-center">
                 <Loader2 className="size-4 animate-spin mr-2" /> Creating
               </div>
-            ) : "Quick Start"}
+            ) : (
+              <div className="inline-flex items-center">
+                <Archive className="size-4 mr-2" />
+                Quick Start
+              </div>
+            )}
           </Button>
-          <CreateEventCategoryModal>
+          <CreateEventCategoryModal containerClassName="w-full sm:w-auto">
             <Button className="flex items-center space-x-2 w-full sm:w-auto">
               <PlusIcon className="size-4" /> Add Category
             </Button>
