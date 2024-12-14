@@ -7,6 +7,7 @@ import { Gem, Home, Key, LucideIcon, Menu, Settings, X } from "lucide-react"
 import Link from "next/link"
 import { PropsWithChildren, useState } from "react"
 import { cn } from "@/lib/utils"
+import Image from "next/image"
 
 interface SidebarItem {
   href: string
@@ -45,9 +46,18 @@ const Sidebar = ({ onClose }: { onClose?: () => void }) => {
   return (
     <div className="space-y-4 md:space-y-6 relative z-20 flex flex-col h-full">
       {/* logo */}
-      <p className="hidden sm:block text-lg/7 font-semibold text-brand-900">
-        PandaFlow
-      </p>
+      <Link href="/" className="flex items-center gap-2 max-sm:hidden">
+        <Image
+          src="/pandaflow.png"
+          alt="PandaFlow Logo"
+          className="h-7 w-auto"
+          width={40}
+          height={40}
+        />
+        <p className="text-lg/7 font-semibold ">
+          PandaFlow
+        </p>
+      </Link>
 
       {/* navigation items */}
       <div className="flex-grow">
@@ -80,7 +90,6 @@ const Sidebar = ({ onClose }: { onClose?: () => void }) => {
 
       <div className="flex flex-col">
         <hr className="my-4 md:my-6 w-full h-px bg-gray-100" />
-
         <UserButton
           showName
           appearance={{
@@ -106,10 +115,19 @@ const Layout = ({ children }: PropsWithChildren) => {
 
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* mobile header */}
-        <div className="md:hidden flex items-center justify-between p-4 border-b border-gray-200">
-          <p className="text-lg/7 font-semibold text-brand-900">
-            Ping<span className="text-brand-700">Panda</span>
-          </p>
+        <div className="md:hidden flex items-center justify-between py-4 px-6 border-b border-gray-200/60 backdrop-blur">
+          <Link href="/" className="flex items-center gap-2">
+            <Image
+              src="/pandaflow.png"
+              alt="PandaFlow Logo"
+              className="h-7 w-auto"
+              width={40}
+              height={40}
+            />
+            <p className="text-lg/7 font-semibold ">
+              PandaFlow
+            </p>
+          </Link>
           <button
             onClick={() => setIsDrawerOpen(true)}
             className="text-gray-500 hover:text-gray-600"
@@ -128,22 +146,30 @@ const Layout = ({ children }: PropsWithChildren) => {
         </div>
 
         <Modal
-          className="p-4"
+          className="p-6"
           showModal={isDrawerOpen}
           setShowModal={setIsDrawerOpen}
         >
           <div className="flex justify-between items-center mb-4">
-            <p className="text-lg/7 font-semibold text-brand-900">
-              Ping<span className="text-brand-700">Panda</span>
-            </p>
+            <div className="flex items-center gap-2">
+              <Image
+                src="/pandaflow.png"
+                alt="PandaFlow Logo"
+                className="h-7 w-auto"
+                width={40}
+                height={40}
+              />
+              <p className="text-lg/7 font-semibold ">
+                PandaFlow
+              </p>
+            </div>
             <button
               aria-label="Close modal"
               onClick={() => setIsDrawerOpen(false)}
             >
-              <X className="size-6" />
+              <X className="size-6 hover:text-red-600 transition-colors" />
             </button>
           </div>
-
           <Sidebar />
         </Modal>
       </div>

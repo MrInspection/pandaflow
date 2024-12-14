@@ -25,7 +25,7 @@ export const EmptyCategoryState = ({categoryName}: {categoryName: string}) => {
     if(hasEvents) router.refresh()
   }, [hasEvents, router])
 
-  const codeSnippet = `await fetch('https://pingpanda.io/api/events', {
+  const codeSnippet = `await fetch('${process.env.NEXT_PUBLIC_SERVER_URL}/api/v1/events', {
   method: 'POST',
   headers: {
     'Authorization': 'Bearer YOUR_API_KEY'

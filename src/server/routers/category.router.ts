@@ -1,7 +1,7 @@
 import { router } from "@/server/__internals/router"
 import { privateProcedure } from "@/server/procedures"
 import { db } from "@/lib/db"
-import { startOfMonth } from "date-fns"
+import { startOfDay, startOfMonth, startOfWeek } from "date-fns"
 import { z } from "zod"
 import { categoryNameSchema, EventCategorySchema } from "@/lib/validators/category.schema"
 import { parseColor } from "@/lib/utils"
@@ -86,8 +86,6 @@ export const categoryRouter = router({
       const { user } = ctx
       const { name, color, emoji } = input
 
-      // TODO: Add paid plan logic
-
       const eventCategory = await db.eventCategory.create({
         data: {
           name: name.toLowerCase(),
@@ -127,8 +125,8 @@ export const categoryRouter = router({
     }),
 
   pollCategory: privateProcedure
-    .input(z.object({name: categoryNameSchema}))
-    .query(async ({c, ctx, input}) => {
+    .input(z.object({ name: categoryNameSchema }))
+    .query(async ({ c, ctx, input }) => {
       const { name } = input
 
       const category = await db.eventCategory.findUnique({
@@ -139,15 +137,85 @@ export const categoryRouter = router({
               events: true,
             },
           },
-        }
+        },
       })
 
-      if(!category) {
+      if (!category) {
         throw new HTTPException(404, { message: `Category ${name} not found` })
       }
 
       const hasEvents = category._count.events > 0
 
       return c.json({ hasEvents })
-    })
+    }),
+
+  getEventsByCategoryName: privateProcedure
+    .input(z.object({
+      name: categoryNameSchema,
+      page: z.number(),
+      limit: z.number().max(50),
+      timeRange: z.enum(["today", "week", "month"]),
+    }))
+    .query(async ({ c, ctx, input }) => {
+      const { name, page, limit, timeRange } = input
+
+      const now = new Date()
+      let startDate: Date
+
+      switch (timeRange) {
+        case "today":
+          startDate = startOfDay(now)
+          break
+        case "week":
+          startDate = startOfWeek(now, { weekStartsOn: 0 })
+          break
+        case "month":
+          startDate = startOfMonth(now)
+          break
+      }
+
+      const [events, eventsCount, uniqueFieldCount] = await Promise.all([
+        db.event.findMany({
+          where: {
+            eventCategory: { name, userId: ctx.user.id },
+            createdAt: { gte: startDate },
+          },
+          skip: (page - 1) * limit,
+          take: limit,
+          orderBy: { createdAt: "desc" },
+        }),
+
+        db.event.count({
+          where: {
+            eventCategory: { name, userId: ctx.user.id },
+            createdAt: { gte: startDate },
+          },
+        }),
+
+        db.event.findMany({
+          where: {
+            eventCategory: { name, userId: ctx.user.id },
+            createdAt: { gte: startDate },
+          },
+          select: {
+            fields: true,
+          },
+          distinct: ["fields"],
+        }).then((events) => {
+          const fieldNames = new Set<string>()
+          events.forEach((event) => {
+            Object.keys(event.fields as object).forEach((fieldName) => {
+              fieldNames.add(fieldName)
+            })
+          })
+          return fieldNames.size
+        }),
+      ])
+
+      return c.superjson({
+        events,
+        eventsCount,
+        uniqueFieldCount,
+      })
+    }),
 })

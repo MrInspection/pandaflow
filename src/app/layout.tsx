@@ -16,8 +16,20 @@ const eb_garamond = EB_Garamond({
 
 export const metadata: Metadata = {
   title: "PandaFlow",
-  description: "Created using jStack",
-  icons: [{ rel: "icon", url: "/favicon.ico" }],
+  description: "Real-Time SaaS Insights, Delivered to Your Discord.",
+  openGraph: {
+    url: "https://pandaflow.vercel.app",
+    title: "PandaFlow",
+    description: "Real-Time SaaS Insights, Delivered to Your Discord.",
+    images: [
+      {
+        url: "https://pandaflow.vercel.app/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "PandaFlow",
+      },
+    ],
+  }
 }
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {

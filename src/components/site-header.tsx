@@ -5,6 +5,7 @@ import { Button, buttonVariants } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import { ArrowRight } from "lucide-react"
 import { currentUser } from "@clerk/nextjs/server"
+import Image from "next/image"
 
 export default async function SiteHeader() {
   const user = await currentUser()
@@ -12,9 +13,16 @@ export default async function SiteHeader() {
   return (
     <nav
       className="sticky z-[100] h-16 inset-x-0 top-0 w-full border-b backdrop-blur-lg border-gray-200 bg-white/80 transition-all">
-      <MaxWidthWrapper>
+      <MaxWidthWrapper className="px-6">
         <div className="flex h-16 items-center justify-between">
           <Link href="/" className="flex items-center gap-2 z-40 font-bold">
+            <Image
+              src="/pandaflow.png"
+              alt="PandaFlow Logo"
+              className="h-7 w-auto"
+              width={40}
+              height={40}
+            />
             PandaFlow
           </Link>
           <div className="h-full flex items-center space-x-2">
