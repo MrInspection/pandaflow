@@ -150,7 +150,7 @@ export default function HomePage() {
                     className="absolute inset-x-10 bottom-0 top-10 overflow-hidden rounded-t-[12cqw] border-x-[3cqw] border-t-[3cqw] border-gray-700 bg-gray-900 shadow-2xl">
                     <Image
                       className="size-full object-cover object-top"
-                      src="/phone-screen.png"
+                      src="/phone-screen.jpg"
                       alt="Phone screen displaying app interface"
                       fill draggable={false}
                     />
