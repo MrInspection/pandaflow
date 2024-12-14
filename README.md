@@ -10,6 +10,17 @@
 - 🌟 Beautiful UI built with Tailwind CSS & Shadcn UI
 - 🛡️ Fully secure API endpoints
 
+## What I learned :
+- React Query : I learned how to use React Query to fetch data from the server side and create real-time updates.
+- API Logic : I learned how to create solid API that are resilient and scalable (also respecting conventions and best practices).
+- Communicating with Discord from an API endpoint : I learned how to use the Discord API to send messages to a Discord channel.
+
+## API Request Example & Result :
+
+![](/public/demo-request.png)
+
+![](/public/demo-result.png)
+
 ## 📗 How to run this project ?
 
 To run this project on your local environment, follow the following steps :

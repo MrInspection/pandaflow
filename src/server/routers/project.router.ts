@@ -55,5 +55,5 @@ export const projectRouter = router({
       })
 
       return c.json({ success: true })
-  }),
+    }),
 })

@@ -25,8 +25,10 @@ export const ApiKeySettings = ({ apiKey }: { apiKey: string }) => {
         <div className="mt-1.5 relative">
           <Input type="password" value={apiKey} className="mt-1.5" readOnly />
           <div className="absolute space-x-0.5 inset-y-0 right-0 flex items-center">
-            <Button variant="ghost" onClick={copyToClipboard} className="p-2 w-10 focus:outline-none focus:ring-2 focus:ring-brand-500 hover:bg-none">
-              {copySuccess ? <CheckIcon className="size-4 text-brand-900" /> : <ClipboardIcon className="size-4 text-brand-900" />}
+            <Button variant="ghost" onClick={copyToClipboard}
+                    className="p-2 w-10 focus:outline-none focus:ring-2 focus:ring-brand-500 hover:bg-none">
+              {copySuccess ? <CheckIcon className="size-4 text-brand-900" /> :
+                <ClipboardIcon className="size-4 text-brand-900" />}
             </Button>
           </div>
         </div>

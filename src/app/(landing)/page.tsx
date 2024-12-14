@@ -310,7 +310,8 @@ export default function HomePage() {
                 <p className="text-sm text-gray-600">@landerson</p>
               </div>
             </div>
-            <div className="flex flex-auto flex-col gap-4 bg-brand-25 p-6 sm:p-8 lg:p-16 rounded-t-[2rem] lg:rounded-tl-none lg:rounded-r-[2rem]">
+            <div
+              className="flex flex-auto flex-col gap-4 bg-brand-25 p-6 sm:p-8 lg:p-16 rounded-t-[2rem] lg:rounded-tl-none lg:rounded-r-[2rem]">
               <div className="flex gap-0.5 mb-2 justify-center lg:justify-start">
                 <Star className="size-5 text-brand-600 fill-brand-600" />
                 <Star className="size-5 text-brand-600 fill-brand-600" />
@@ -320,7 +321,8 @@ export default function HomePage() {
               </div>
               <p
                 className="text-base sm:text-lg lg:text-lg/8 font-medium tracking-tight text-brand-950 text-center lg:text-left text-pretty">
-                PandaFlow&apos;s being paying off for our SaaS. Nice to have simple way to see how we&apos;re doing day-to-day to help us make better decisions.
+                PandaFlow&apos;s being paying off for our SaaS. Nice to have simple way to see how we&apos;re doing
+                day-to-day to help us make better decisions.
               </p>
               <div
                 className="flex flex-col justify-center lg:justify-start sm:flex-row items-center sm:items-start gap-4 mt-2">

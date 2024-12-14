@@ -29,7 +29,7 @@ export const metadata: Metadata = {
         alt: "PandaFlow",
       },
     ],
-  }
+  },
 }
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {

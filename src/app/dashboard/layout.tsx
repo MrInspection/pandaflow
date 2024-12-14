@@ -115,7 +115,8 @@ const Layout = ({ children }: PropsWithChildren) => {
 
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* mobile header */}
-        <div className="md:hidden flex items-center justify-between py-4 px-6 border-b border-gray-200/60 backdrop-blur">
+        <div
+          className="md:hidden flex items-center justify-between py-4 px-6 border-b border-gray-200/60 backdrop-blur">
           <Link href="/" className="flex items-center gap-2">
             <Image
               src="/pandaflow.png"

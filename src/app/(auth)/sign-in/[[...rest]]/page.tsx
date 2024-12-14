@@ -9,11 +9,11 @@ import { useSearchParams } from "next/navigation"
 
 export default function SignInPage() {
   const searchParams = useSearchParams()
-const intent = searchParams.get("intent")
+  const intent = searchParams.get("intent")
 
   return (
     <div className="w-full flex-1 flex items-center justify-center flex-grow">
-      <Link href="/" className={cn(buttonVariants({variant: "ghost"}), "absolute top-4 left-4")}>
+      <Link href="/" className={cn(buttonVariants({ variant: "ghost" }), "absolute top-4 left-4")}>
         <div className="flex items-center gap-2">
           <ChevronLeft className="size-4" /> Home
         </div>

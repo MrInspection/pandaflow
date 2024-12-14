@@ -19,7 +19,6 @@ import { Button } from "@/components/ui/button"
 import { EventCategoryType, EventCategorySchema } from "@/lib/validators/category.schema"
 import { client } from "@/lib/client"
 import { Loader2 } from "lucide-react"
-import { createElementProps } from "react-syntax-highlighter"
 
 const COLOR_OPTIONS = [
   "#FF6B6B", // bg-[#FF6B6B] ring-[#FF6B6B] Bright Red

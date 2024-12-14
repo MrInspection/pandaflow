@@ -47,7 +47,7 @@ export const CategoryPageContent = ({
   const searchParams = useSearchParams()
 
   const [activeTab, setActiveTab] = useState<"today" | "week" | "month">(
-    "today"
+    "today",
   )
 
   // https://localhost:3000/dashboard/category/sale?page=5&limit=30
@@ -141,7 +141,7 @@ export const CategoryPageContent = ({
       },
     ],
 
-    [category.name, data?.events]
+    [category.name, data?.events],
   )
 
   const [sorting, setSorting] = useState<SortingState>([])
@@ -323,7 +323,7 @@ export const CategoryPageContent = ({
                         ? null
                         : flexRender(
                           header.column.columnDef.header,
-                          header.getContext()
+                          header.getContext(),
                         )}
                     </TableHead>
                   ))}
@@ -349,7 +349,7 @@ export const CategoryPageContent = ({
                       <TableCell key={cell.id}>
                         {flexRender(
                           cell.column.columnDef.cell,
-                          cell.getContext()
+                          cell.getContext(),
                         )}
                       </TableCell>
                     ))}

@@ -1,14 +1,14 @@
-import Link from "next/link";
-import {cn} from "@/lib/utils";
-import {buttonVariants} from "@/components/ui/button";
-import SiteHeader from "@/components/site-header";
-import SiteFooter from "@/components/site-footer";
+import Link from "next/link"
+import { cn } from "@/lib/utils"
+import { buttonVariants } from "@/components/ui/button"
+import SiteHeader from "@/components/site-header"
+import SiteFooter from "@/components/site-footer"
 import { Heading } from "@/components/headings"
 
 export default function NotFound() {
   return (
     <div className="flex flex-col min-h-screen bg-brand-25">
-      <SiteHeader/>
+      <SiteHeader />
       <main className="flex-grow flex items-center justify-center mx-auto">
         <div className="container px-4">
           <div className="max-w-md flex flex-col items-center justify-center text-center">
@@ -26,7 +26,7 @@ export default function NotFound() {
           </div>
         </div>
       </main>
-      <SiteFooter/>
+      <SiteFooter />
     </div>
   )
 }

@@ -17,5 +17,4 @@ export const paymentRouter = router({
     const { user } = ctx
     return c.json({ plan: user.plan })
   }),
-
 })

@@ -6,7 +6,7 @@ import { Card } from "@/components/ui/card"
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
 import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism"
 
-export const EmptyCategoryState = ({categoryName}: {categoryName: string}) => {
+export const EmptyCategoryState = ({ categoryName }: { categoryName: string }) => {
   const router = useRouter()
 
   const { data } = useQuery({
@@ -17,12 +17,12 @@ export const EmptyCategoryState = ({categoryName}: {categoryName: string}) => {
     },
     refetchInterval(query) {
       return query.state.data?.hasEvents ? false : 1000
-    }
+    },
   })
 
   const hasEvents = data?.hasEvents
   useEffect(() => {
-    if(hasEvents) router.refresh()
+    if (hasEvents) router.refresh()
   }, [hasEvents, router])
 
   const codeSnippet = `await fetch('${process.env.NEXT_PUBLIC_SERVER_URL}/api/v1/events', {

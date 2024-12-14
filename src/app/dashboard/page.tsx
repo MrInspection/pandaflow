@@ -15,7 +15,7 @@ interface PageProps {
   }
 }
 
-export default async function Dashboard({searchParams}: PageProps) {
+export default async function Dashboard({ searchParams }: PageProps) {
   const auth = await currentUser()
 
   if (!auth) {

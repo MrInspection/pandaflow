@@ -1,10 +1,9 @@
 "use client"
 
 import { ReactNode } from "react"
-import { Button, buttonVariants } from "@/components/ui/button"
-import { ArrowLeft, ChevronLeft } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { ChevronLeft } from "lucide-react"
 import { Heading } from "@/components/headings"
-import Link from "next/link"
 import { useRouter } from "next/navigation"
 
 interface DashboardPageProps {

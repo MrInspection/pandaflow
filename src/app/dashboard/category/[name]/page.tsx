@@ -11,7 +11,7 @@ interface PageProps {
 }
 
 export default async function Page({ params }: PageProps) {
-  if(typeof params.name !== "string") {
+  if (typeof params.name !== "string") {
     return notFound()
   }
 
@@ -35,7 +35,7 @@ export default async function Page({ params }: PageProps) {
           events: true,
         },
       },
-    }
+    },
   })
 
   if (!category) return notFound()
