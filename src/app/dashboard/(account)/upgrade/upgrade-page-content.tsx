@@ -34,7 +34,7 @@ export const UpgradePageContent = ({ plan }: { plan: Plan }) => {
     <div className="max-w-3xl flex flex-col gap-8">
       <section>
         <h1 className="mt-2 text-xl/8 font-medium tracking-tight text-gray-900">
-          {plan === "PRO" ? "Plan: free" : "Plan: free"}
+          {plan === "PRO" ? "Plan: Pro" : "Plan: Free"}
         </h1>
         <p className="text-sm/6 text-gray-600 max-w-prose">
           {plan === "PRO"
