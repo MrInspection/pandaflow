@@ -59,9 +59,12 @@ export default function HomePage() {
               ))}
             </ul>
             <div className="w-full max-w-80">
-              <ShinyButton href="/sign-up"
-                           className="relative z-10 h-10 w-full text-base shadow-lg transition-shadow duration-300 hover:shadow-xl">Start
-                For Free Today</ShinyButton>
+              <ShinyButton
+                href="/sign-up"
+                className="relative z-10 h-10 w-full text-base shadow-lg transition-shadow duration-300 hover:shadow-xl"
+              >
+                Start For Free Today
+              </ShinyButton>
             </div>
           </div>
         </MaxWidthWrapper>
@@ -126,9 +129,8 @@ export default function HomePage() {
             <h2 className="text-center text-base/7 font-semibold text-brand-600">
               Intuitive Monitoring
             </h2>
-            <Heading>Stay ahead with real-time insights</Heading>
+            <Heading className="text-center">Stay ahead with real-time insights</Heading>
           </div>
-
           <div className="grid gap-4 lg:grid-cols-3 lg:grid-rows-2">
             {/* Bento grids */}
             <section className="relative lg:row-span-2">
@@ -274,10 +276,8 @@ export default function HomePage() {
             </h2>
             <Heading className="text-center">What our customers say</Heading>
           </div>
-
-          {/* Customer testimonials */}
-          <section
-            className="mx-auto grid max-w-2xl grid-cols-2 px-4 lg:mx-auto lg:max-w-none lg:grid-cols-2 max-lg:divide-y lg:divide-x divide-gray-200">
+          <div className="mx-auto grid max-w-2xl grid-cols-1 px-4 lg:mx-0 lg:max-w-none lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-gray-200">
+            {/* first customer review */}
             <div
               className="flex flex-auto flex-col gap-4 bg-brand-25 p-6 sm:p-8 lg:p-16 rounded-t-[2rem] lg:rounded-tr-none lg:rounded-l-[2rem]">
               <div className="flex gap-0.5 mb-2 justify-center lg:justify-start">
@@ -289,29 +289,32 @@ export default function HomePage() {
               </div>
               <p
                 className="text-base sm:text-lg lg:text-lg/8 font-medium tracking-tight text-brand-950 text-center lg:text-left text-pretty">
-                PandaFlow has been a game-changer for me. I&apos;ve been using it for two months now and seeing sales
-                pop up in real-time is super satisfying.
+                PingPanda has been a game-changer for me. I've been using it for
+                two months now and seeing sales pop up in real-time is super
+                satisfying.
               </p>
               <div
                 className="flex flex-col justify-center lg:justify-start sm:flex-row items-center sm:items-start gap-4 mt-2">
                 <Image
                   src="/user-2.png"
                   className="rounded-full object-cover"
-                  alt="Random User"
+                  alt="Random user"
                   width={48}
                   height={48}
                 />
-              </div>
-              <div className="flex flex-col items-center sm:items-start">
-                <p className="font-semibold flex items-center">
-                  Laura Anderson
-                  <Icons.verificationBadge className="size-4 inline-block ml-1.5 " />
-                </p>
-                <p className="text-sm text-gray-600">@landerson</p>
+                <div className="flex flex-col items-center sm:items-start">
+                  <p className="font-semibold flex items-center">
+                    Freya Larsson
+                    <Icons.verificationBadge className="size-4 inline-block ml-1.5" />
+                  </p>
+                  <p className="text-sm text-gray-600">@itsfreya</p>
+                </div>
               </div>
             </div>
+
+            {/* second customer review */}
             <div
-              className="flex flex-auto flex-col gap-4 bg-brand-25 p-6 sm:p-8 lg:p-16 rounded-t-[2rem] lg:rounded-tl-none lg:rounded-r-[2rem]">
+              className="flex flex-auto flex-col gap-4 bg-brand-25 p-6 sm:p-8 lg:p-16 rounded-b-[2rem] lg:rounded-bl-none lg:rounded-r-[2rem]">
               <div className="flex gap-0.5 mb-2 justify-center lg:justify-start">
                 <Star className="size-5 text-brand-600 fill-brand-600" />
                 <Star className="size-5 text-brand-600 fill-brand-600" />
@@ -321,28 +324,35 @@ export default function HomePage() {
               </div>
               <p
                 className="text-base sm:text-lg lg:text-lg/8 font-medium tracking-tight text-brand-950 text-center lg:text-left text-pretty">
-                PandaFlow&apos;s being paying off for our SaaS. Nice to have simple way to see how we&apos;re doing
-                day-to-day to help us make better decisions.
+                PingPanda's been paying off for our SaaS. Nice to have simple
+                way to see how we're doing day-to-day. Definitely makes our
+                lives easier.
               </p>
               <div
                 className="flex flex-col justify-center lg:justify-start sm:flex-row items-center sm:items-start gap-4 mt-2">
                 <Image
                   src="/user-1.png"
                   className="rounded-full object-cover"
-                  alt="Random User"
+                  alt="Random user"
                   width={48}
                   height={48}
                 />
-              </div>
-              <div className="flex flex-col items-center sm:items-start">
-                <p className="font-semibold flex items-center">
-                  Tom Cucherosset
-                  <Icons.verificationBadge className="size-4 inline-block ml-1.5 " />
-                </p>
-                <p className="text-sm text-gray-600">@inkflow</p>
+                <div className="flex flex-col items-center sm:items-start">
+                  <p className="font-semibold flex items-center">
+                    Kai Durant
+                    <Icons.verificationBadge className="size-4 inline-block ml-1.5" />
+                  </p>
+                  <p className="text-sm text-gray-600">@kdurant_</p>
+                </div>
               </div>
             </div>
-          </section>
+          </div>
+          <ShinyButton
+            href="/sign-up"
+            className="relative z-10 h-14 w-full max-w-xs text-base shadow-lg transition-shadow duration-300 hover:shadow-xl"
+          >
+            Start For Free Today
+          </ShinyButton>
         </MaxWidthWrapper>
       </section>
     </>

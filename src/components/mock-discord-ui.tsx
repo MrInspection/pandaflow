@@ -17,13 +17,11 @@ import Image from "next/image"
 
 export const MockDiscordUI = ({ children }: { children: ReactNode }) => {
   return (
-    <div
-      className="flex min-h-[800px] w-full max-w-[1200px] bg-discord-gray text-white rounded-lg overflow-hidden shadow-xl">
+    <div className="flex min-h-[800px] w-full max-w-[1200px] bg-discord-gray text-white rounded-lg overflow-hidden shadow-xl">
 
       {/* Discord Server List */}
       <section className="hidden sm:flex w-[72px] bg-[#202225] py-3 flex-col items-center">
-        <div
-          className="size-12 bg-discord-brand-color rounded-2xl flex items-center justify-center mb-2 hover:rounded-xl transition-all duration-200">
+        <div className="size-12 bg-discord-brand-color rounded-2xl flex items-center justify-center mb-2 hover:rounded-xl transition-all duration-200">
           <Icons.discord className="size-3/5 text-white" />
         </div>
         <div className="w-8 h-[2px] bg-discord-gray rounded-full my-2" />
@@ -35,8 +33,7 @@ export const MockDiscordUI = ({ children }: { children: ReactNode }) => {
             </span>
           </div>
         ))}
-        <div
-          className="group size-12 bg-discord-gray rounded-3xl flex items-center justify-center mb-3 hover:rounded-xl transition-all duration-200 hover:bg-[#3ba55c] cursor-not-allowed">
+        <div className="group size-12 bg-discord-gray rounded-3xl flex items-center justify-center mb-3 hover:rounded-xl transition-all duration-200 hover:bg-[#3ba55c] cursor-not-allowed">
           <Plus className="text-[#3ba55c] group-hover:text-white" />
         </div>
         <div
@@ -164,9 +161,9 @@ export const MockDiscordUI = ({ children }: { children: ReactNode }) => {
               className="flex-1 bg-transparent py-2.5 px-1 focus:outline-none text-white placeholder-[#72767d] cursor-not-allowed"
             />
             <div className="flex items-center space-x-3 mx-3 text-[#b9bbbe]">
-              <Gift className="size-5 hover:text-white cursor-not-allowed" />
-              <Sticker className="size-5 hover:text-white cursor-not-allowed" />
-              <Smile className="size-5 hover:text-white cursor-not-allowed" />
+              <Gift className="size-5 hover:text-white cursor-not-allowed max-sm:hidden" />
+              <Sticker className="size-5 hover:text-white cursor-not-allowed max-sm:hidden" />
+              <Smile className="size-5 hover:text-white cursor-not-allowed max-sm:hidden" />
             </div>
           </div>
         </div>

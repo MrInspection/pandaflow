@@ -171,7 +171,7 @@ const Layout = ({ children }: PropsWithChildren) => {
               <X className="size-6 hover:text-red-600 transition-colors" />
             </button>
           </div>
-          <Sidebar />
+          <Sidebar onClose={() => setIsDrawerOpen(false)} />
         </Modal>
       </div>
     </div>
