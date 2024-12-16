@@ -21,6 +21,8 @@
 
 ![](/public/demo-result.png)
 
+> Note seeing messages in Discord ? You might need to have a mutual server with the  bot for him to be able to message your account. You can join the following server and test it: https://discord.gg/KmJ89awsKT
+
 ## 📗 How to run this project ?
 
 To run this project on your local environment, follow the following steps :
