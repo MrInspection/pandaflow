@@ -14,7 +14,7 @@ export default function SignInPage() {
           <ChevronLeft className="size-4" /> Home
         </div>
       </Link>
-      <SignUp />
+      <SignUp fallbackRedirectUrl="/welcome" forceRedirectUrl="/welcome" />
     </div>
   )
 }
