@@ -40,3 +40,5 @@ next-env.d.ts
 
 # wrangler
 .wrangler
+
+/src/generated/prisma
