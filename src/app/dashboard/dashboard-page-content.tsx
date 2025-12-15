@@ -1,6 +1,5 @@
 "use client";
 
-import type { EventCategory } from "@prisma/client";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { format, formatDistanceToNow } from "date-fns";
 import {
@@ -18,6 +17,7 @@ import { LoadingSpinner } from "@/components/loading-spinner";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Modal } from "@/components/ui/modal";
 import { client } from "@/lib/client";
+import { EventCategory } from "@/generated/prisma/client"
 
 export function DashboardPageContent() {
   const [deletingCategory, setDeletingCategory] = useState<string | null>(null);
@@ -59,7 +59,7 @@ export function DashboardPageContent() {
   return (
     <>
       <ul className="grid max-w-6xl grid-cols-1 gap-6 lg:grid-cols-2 xl:grid-cols-3">
-        {categories.map((category: EventCategory) => (
+        {categories.map((category) => (
           <li
             key={category.id}
             className="group relative z-10 transition-all duration-200 hover:-translate-y-0.5"
