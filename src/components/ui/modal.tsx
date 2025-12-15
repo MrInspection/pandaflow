@@ -1,41 +1,41 @@
-import { useMediaQuery } from "@/hooks/use-media-query"
-import { Dispatch, ReactNode, SetStateAction } from "react"
-import { Drawer } from "vaul"
-import { Dialog, DialogContent, DialogTitle } from "./dialog"
-import { cn } from "@/lib/utils"
+import type { Dispatch, ReactNode, SetStateAction } from "react";
+import { Drawer } from "vaul";
+import { useMediaQuery } from "@/hooks/use-media-query";
+import { cn } from "@/lib/utils";
+import { Dialog, DialogContent, DialogTitle } from "./dialog";
 
 interface ModalProps {
-  children?: ReactNode
-  className?: string
-  showModal?: boolean
-  setShowModal?: Dispatch<SetStateAction<boolean>>
-  onClose?: () => void
-  desktopOnly?: boolean
-  preventDefaultClose?: boolean
+  children?: ReactNode;
+  className?: string;
+  showModal?: boolean;
+  setShowModal?: Dispatch<SetStateAction<boolean>>;
+  onClose?: () => void;
+  desktopOnly?: boolean;
+  preventDefaultClose?: boolean;
 }
 
 export const Modal = ({
-                        children,
-                        className,
-                        desktopOnly,
-                        onClose,
-                        preventDefaultClose,
-                        setShowModal,
-                        showModal,
-                      }: ModalProps) => {
+  children,
+  className,
+  desktopOnly,
+  onClose,
+  preventDefaultClose,
+  setShowModal,
+  showModal,
+}: ModalProps) => {
   const closeModal = ({ dragged }: { dragged?: boolean }) => {
     if (preventDefaultClose && !dragged) {
-      return
+      return;
     }
 
-    onClose && onClose()
+    onClose && onClose();
 
     if (setShowModal) {
-      setShowModal(false)
+      setShowModal(false);
     }
-  }
+  };
 
-  const { isMobile } = useMediaQuery()
+  const { isMobile } = useMediaQuery();
 
   if (isMobile && !desktopOnly) {
     return (
@@ -43,15 +43,15 @@ export const Modal = ({
         open={setShowModal ? showModal : true}
         onOpenChange={(open) => {
           if (!open) {
-            closeModal({ dragged: true })
+            closeModal({ dragged: true });
           }
         }}
       >
-        <Drawer.Overlay className="fixed inset-0 z-40 bg-gray-100 bg-opacity-10 backdrop-blur" />
+        <Drawer.Overlay className="fixed inset-0 z-40 bg-gray-100 bg-opacity-10 backdrop-blur-sm" />
         <Drawer.Portal>
           <Drawer.Content
             className={cn(
-              "fixed !max-w-none bottom-0 left-0 right-0 z-50 mt-24 rounded-t-[10px] border-t border-gray-200 bg-white",
+              "fixed right-0 bottom-0 left-0 z-50 mt-24 max-w-none! rounded-t-[10px] border-gray-200 border-t bg-white",
               className,
             )}
           >
@@ -63,7 +63,7 @@ export const Modal = ({
           </Drawer.Content>
         </Drawer.Portal>
       </Drawer.Root>
-    )
+    );
   }
 
   return (
@@ -71,12 +71,12 @@ export const Modal = ({
       open={setShowModal ? showModal : true}
       onOpenChange={(open) => {
         if (!open) {
-          closeModal({ dragged: true })
+          closeModal({ dragged: true });
         }
       }}
     >
       <DialogTitle className="sr-only">Dialog</DialogTitle>
       <DialogContent>{children}</DialogContent>
     </Dialog>
-  )
-}
+  );
+};

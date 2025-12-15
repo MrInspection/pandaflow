@@ -1,33 +1,34 @@
-import { notFound } from "next/navigation"
-import { currentUser } from "@clerk/nextjs/server"
-import { db } from "@/lib/db"
-import { DashboardPage } from "@/components/dashboard-page"
-import { CategoryPageContent } from "@/app/dashboard/category/[name]/category-page-content"
+import { currentUser } from "@clerk/nextjs/server";
+import { notFound } from "next/navigation";
+import { CategoryPageContent } from "@/app/dashboard/category/[name]/category-page-content";
+import { DashboardPage } from "@/components/dashboard-page";
+import prisma from "@/lib/prisma";
 
 interface PageProps {
-  params: {
-    name: string | string[] | undefined
-  }
+  params: Promise<{
+    name: string | string[] | undefined;
+  }>;
 }
 
-export default async function Page({ params }: PageProps) {
+export default async function Page(props: PageProps) {
+  const params = await props.params;
   if (typeof params.name !== "string") {
-    return notFound()
+    return notFound();
   }
 
-  const auth = await currentUser()
+  const auth = await currentUser();
 
   if (!auth) {
-    return notFound()
+    return notFound();
   }
 
-  const user = await db.user.findUnique({
+  const user = await prisma.user.findUnique({
     where: { externalId: auth.id },
-  })
+  });
 
-  if (!user) return notFound()
+  if (!user) return notFound();
 
-  const category = await db.eventCategory.findUnique({
+  const category = await prisma.eventCategory.findUnique({
     where: { name_userId: { name: params.name, userId: user.id } },
     include: {
       _count: {
@@ -36,15 +37,17 @@ export default async function Page({ params }: PageProps) {
         },
       },
     },
-  })
+  });
 
-  if (!category) return notFound()
+  if (!category) return notFound();
 
-  const hasEvents = category._count.events > 0
+  const hasEvents = category._count.events > 0;
 
   return (
-    <DashboardPage title={`${category.emoji} ${category.name.charAt(0).toUpperCase() + category.name.slice(1)} Events`}>
+    <DashboardPage
+      title={`${category.emoji} ${category.name.charAt(0).toUpperCase() + category.name.slice(1)} Events`}
+    >
       <CategoryPageContent hasEvents={hasEvents} category={category} />
     </DashboardPage>
-  )
+  );
 }
