@@ -1,11 +1,11 @@
 "use client";
 
-import type { Plan } from "@prisma/client";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { format } from "date-fns";
 import { BarChart } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { Card } from "@/components/ui/card";
+import type { Plan } from "@/generated/prisma/enums";
 import { client } from "@/lib/client";
 
 export const UpgradePageContent = ({ plan }: { plan: Plan }) => {

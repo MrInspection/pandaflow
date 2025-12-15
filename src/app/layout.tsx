@@ -36,7 +36,11 @@ export default function RootLayout({
 }: Readonly<{ children: ReactNode }>) {
   return (
     <ClerkProvider>
-      <html lang="en" className={cn(inter.variable, eb_garamond.variable)} suppressHydrationWarning>
+      <html
+        lang="en"
+        className={cn(inter.variable, eb_garamond.variable)}
+        suppressHydrationWarning
+      >
         <body className="bg-brand-50 font-sans text-brand-950 antialiased">
           <Providers>{children}</Providers>
         </body>

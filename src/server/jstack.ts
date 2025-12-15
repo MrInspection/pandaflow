@@ -1,7 +1,7 @@
 import { currentUser } from "@clerk/nextjs/server";
 import { HTTPException } from "hono/http-exception";
 import { jstack } from "jstack";
-import  prisma  from "@/lib/prisma";
+import prisma from "@/lib/prisma";
 
 interface Env {
   Bindings: {
