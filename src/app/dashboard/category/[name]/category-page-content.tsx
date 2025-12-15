@@ -1,6 +1,5 @@
 "use client";
 
-import type { Event, EventCategory } from "@prisma/client";
 import { useQuery } from "@tanstack/react-query";
 import {
   type ColumnDef,
@@ -33,6 +32,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { client } from "@/lib/client";
 import { cn } from "@/lib/utils";
 import { EmptyCategoryState } from "./empty-category-state";
+import { EventCategory, Event } from "@/generated/prisma/client"
 
 interface CategoryPageContentProps {
   hasEvents: boolean;
