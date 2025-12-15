@@ -1,11 +1,11 @@
-import { clsx, type ClassValue } from "clsx"
-import { twMerge } from "tailwind-merge"
+import { type ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
+  return twMerge(clsx(inputs));
 }
 
 export const parseColor = (color: string) => {
-  const hex = color.startsWith("#") ? color.slice(1) : color
-  return parseInt(hex, 16)
-}
+  const hex = color.startsWith("#") ? color.slice(1) : color;
+  return Number.parseInt(hex, 16);
+};

@@ -1,44 +1,46 @@
-"use client"
+"use client";
 
-import { LucideProps } from "lucide-react"
-import { LoadingSpinner } from "@/components/loading-spinner"
-import { Heading } from "@/components/headings"
-import { useQuery } from "@tanstack/react-query"
-import { client } from "@/lib/client"
-import { useRouter } from "next/navigation"
-import { useEffect } from "react"
+import { useQuery } from "@tanstack/react-query";
+import type { LucideProps } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+import { Heading } from "@/components/headings";
+import { LoadingSpinner } from "@/components/loading-spinner";
+import { client } from "@/lib/client";
 
 export default function Welcome() {
-  const router = useRouter()
+  const router = useRouter();
   const { data } = useQuery({
     queryFn: async () => {
-      const res = await client.auth.getDatabaseSyncStatus.$get()
-      return await res.json()
+      const res = await client.auth.getDatabaseSyncStatus.$get();
+      return await res.json();
     },
     queryKey: ["get-database-sync-status"],
     refetchInterval: (query) => {
-      return query.state.data?.isSynced ? false : 1000
-    }
-  })
+      return query.state.data?.isSynced ? false : 1000;
+    },
+  });
 
   useEffect(() => {
-    if(data?.isSynced) {
-      router.push("/dashboard")
+    if (data?.isSynced) {
+      router.push("/dashboard");
     }
-  }, [data, router])
+  }, [data, router]);
 
   return (
     <>
       <div className="flex w-full flex-1 items-center justify-center px-4">
-        <BackgroundPattern className="absolute inset-0 left-1/2 z-0 -translate-x-1/2 opacity-75"/>
-        <div className="relative z-10 flex flex-col -translate-y-1/2 items-center gap-6 text-center">
+        <BackgroundPattern className="absolute inset-0 left-1/2 z-0 -translate-x-1/2 opacity-75" />
+        <div className="relative z-10 flex -translate-y-1/2 flex-col items-center gap-6 text-center">
           <LoadingSpinner />
           <Heading>Creating your account...</Heading>
-          <p className="text-base/7 text-gray-600 max-w-prose">Just a moment while we set things up for you</p>
+          <p className="max-w-prose text-base/7 text-gray-600">
+            Just a moment while we set things up for you
+          </p>
         </div>
       </div>
     </>
-  )
+  );
 }
 
 const BackgroundPattern = (props: LucideProps) => {
@@ -58,7 +60,8 @@ const BackgroundPattern = (props: LucideProps) => {
         x="0"
         y="-32"
         width="768"
-        height="768">
+        height="768"
+      >
         <rect
           width="768"
           height="768"
@@ -136,5 +139,5 @@ const BackgroundPattern = (props: LucideProps) => {
         </clipPath>
       </defs>
     </svg>
-  )
-}
+  );
+};
