@@ -1,5 +1,5 @@
 import { createClient } from "jstack";
-import { AppRouter } from "@/server"
+import type { AppRouter } from "@/server";
 
 /**
  * Your type-safe API client

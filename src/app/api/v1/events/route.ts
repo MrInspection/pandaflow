@@ -2,7 +2,7 @@ import { type NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { FREE_QUOTA, PRO_QUOTA } from "@/config/config";
 import { DiscordClient } from "@/lib/discord-client";
-import prisma  from "@/lib/prisma";
+import prisma from "@/lib/prisma";
 import { categoryNameSchema } from "@/lib/validators/category.schema";
 
 const REQUEST_VALIDATOR = z
